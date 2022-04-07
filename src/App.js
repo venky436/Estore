@@ -19,10 +19,6 @@ export let Store = React.createContext();
 
 
 
-
-
-
-
 function App() {
 
 
@@ -37,7 +33,7 @@ function App() {
 
           <Switch>
             <Route exact path="/" component={Body} />
-            <Route exact path="/view/:id" component={ProductScreen} />
+            <Route  path="/view/:id" component={ProductScreen} />
             <Route exact path="/cart/item" component={CartScreen} />
             <Route path="/count" component={Counter} />
           </Switch>

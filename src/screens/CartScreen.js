@@ -2,7 +2,7 @@ import React,{useState,useEffect,useContext} from 'react'
 import { ListGroup } from 'react-bootstrap'
 import { products } from '../products'
 import { useSelector,useDispatch } from 'react-redux'
-// import { CartAction } from '../Actions/CartAction'
+
 import '../Css/CartScreen.css'
 
 import { Store } from '../App'

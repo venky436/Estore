@@ -1,10 +1,10 @@
 import React,{useState,useEffect,useMemo,useContext} from 'react'
 import '../components/Body/Body.css'
-import { cartItems, products } from '../products'
+import { products } from '../products'
 import { Link } from 'react-router-dom'
 import {Rating} from '../components/Rating'
 import {useDispatch} from 'react-redux'
-import { cartAction } from '../Actions/cartAction'
+
 import { Header } from '../components/Header/Header'
 // import {context} from '/src/App.js'
 
@@ -27,13 +27,9 @@ export const ProductScreen = ({match,history}) => {
 
     let Id = match.params.id
     
-    let dispatch = useDispatch()
+    
 
     
-  
-   
-
-
     let cartHandler = (id)=>{
 
       let cart = products.find((ele)=>ele.id === id)
@@ -51,11 +47,6 @@ export const ProductScreen = ({match,history}) => {
      
      history.push(`/cart/item`)
 
-     
-    
-
-
-    
     }
 
     useEffect(()=>{ 
@@ -63,7 +54,7 @@ export const ProductScreen = ({match,history}) => {
         if(Id == ''){
             history.push('/')
         }else{
-            let item = products.find((ele)=>ele.id == Id)
+            let item = products.find((ele)=>ele.id == Number(Id))
             setP(item)
         }
 
