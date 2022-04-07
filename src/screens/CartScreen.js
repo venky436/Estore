@@ -44,6 +44,7 @@ export const CartScreen = ({match,history,location}) => {
   }
 
   let placeHandler=()=>{
+   
     alert('Your order successfully placed')
     history.push('/')
     localStorage.removeItem('cartItems')
@@ -128,7 +129,7 @@ let price = cartItem && cartItem.reduce((acc,ele)=>acc+(ele.price*ele.qty),0)
                   <span>$ {price > 100 ? 14 : 0}</span>
                 </h3>
                 <hr />
-                <button className="btn btn-primary d-block w-100 fs-3" onClick={placeHandler}>
+                <button className="btn btn-primary d-block w-100 fs-3" disabled={items.length > 0 ? false : true} onClick={placeHandler}>
                   Place Order
                 </button>
               </div>

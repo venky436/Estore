@@ -158,7 +158,7 @@ let signupSubmit = (e) => {
             <div className="right_content">
               <Link to="/cart/item">
                 <li onMouseOver={cartHandler}>
-                  <i className="fas fa-shopping-cart"></i> Cart ({cart_count})
+                  <i className="fas fa-shopping-cart"></i> Cart
                 </li>
               </Link>
               {/* <li onMouseOver={loginHandler}>
@@ -249,7 +249,7 @@ let signupSubmit = (e) => {
       </div>
 
       {/* Cart */}
-      <div className={cart ? "cart active bg-light" : "cart"}></div>
+      {/* <div className={cart ? "cart active bg-light" : "cart"}></div> */}
     </>
   );
 };
