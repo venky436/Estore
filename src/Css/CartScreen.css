@@ -1,0 +1,26 @@
+#image{
+    display: block;
+    width: 10rem;
+    height: 10rem;
+}
+#list_group{
+    display: inline;
+    align-items: center;
+    justify-content: space-around;
+}
+td{
+    /* display: block; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    font-size: 1.5rem;
+    padding:0 1rem !important;
+   
+   
+}
+#btn{
+    display: block;
+    font-size: 2rem;
+    background-color:white;
+    border: 0;
+    /* margin: 0 1.5rem; */
+}

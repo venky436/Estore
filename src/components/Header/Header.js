@@ -1,15 +1,21 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import '../Header/Header.css'
 import {LinkContainer} from 'react-router-bootstrap';
 import { Link } from 'react-router-dom';
 
+import { cart_count } from '../../screens/CartScreen';
+
+
 export const Header = () => {
+
+
 
  let [menu,setMenu] = useState(false)
  let [login, setLogin] = useState(false);
  let [signup, setSignup] = useState(false);
  let [cart, setCart] = useState(false);
 
+//  let [ccount,setCount] = useState(cart_count)
 
 
 //  for Login
@@ -23,6 +29,7 @@ let [s_username,setS_username] = useState('')
 let [s_password,setS_password] = useState('')
 let [s_cpassword, setS_cpassword] = useState("");
 let [email,setEmail] = useState('')
+
 
 
 
@@ -42,7 +49,6 @@ let [email,setEmail] = useState('')
      setCart(false);
    }
  });
-
 
 
 
@@ -150,16 +156,18 @@ let signupSubmit = (e) => {
 
           <div className="right">
             <div className="right_content">
-              <li onMouseOver={cartHandler}>
-                <i className="fas fa-shopping-cart"></i> Cart
-              </li>
-              <li onMouseOver={loginHandler}>
+              <Link to="/cart/item">
+                <li onMouseOver={cartHandler}>
+                  <i className="fas fa-shopping-cart"></i> Cart ({cart_count})
+                </li>
+              </Link>
+              {/* <li onMouseOver={loginHandler}>
                 <i className="fas fa-sign-in-alt"></i> Login
               </li>
               <li onMouseOver={signupHandler}>
                 {" "}
                 <i className="fas fa-user-plus"></i> Signup
-              </li>
+              </li> */}
             </div>
           </div>
         </div>

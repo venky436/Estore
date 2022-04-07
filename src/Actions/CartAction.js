@@ -1,14 +1,9 @@
-import React from "react";
+// import axios from 'axios'
 
-import { useDispatch } from "react-redux"
-
-export const CartAction =({data})=>(dispatch,getState)=>{
-
-      dispatch({
-          type : 'ADD_TO_CART',
-          payload : data
-
-      })
-      localStorage.setItem('cartItems',JSON.stringify(getState().cart.cartItems))
-   
+export const cartAction = (id) =>(getState,dispatch)=>{
+    dispatch({
+        type : 'ADD_TO_CART',
+        payload : id
+    })
+    localStorage.setItem('cartItems',JSON.stringify(getState().cart.cartItems))
 }

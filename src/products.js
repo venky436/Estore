@@ -1,3 +1,7 @@
+import React from "react";
+
+
+
 export let products = [
   {
     id: 1,
@@ -290,3 +294,6 @@ const proshop = [
 ];
 
 export default proshop;
+
+export const cartItems =  []
+

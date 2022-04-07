@@ -1,21 +1,61 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useMemo,useContext} from 'react'
 import '../components/Body/Body.css'
-import { products } from '../products'
+import { cartItems, products } from '../products'
 import { Link } from 'react-router-dom'
 import {Rating} from '../components/Rating'
+import {useDispatch} from 'react-redux'
+import { cartAction } from '../Actions/cartAction'
+import { Header } from '../components/Header/Header'
+// import {context} from '/src/App.js'
+
+// import { cartItems } from '../products'
+
+// import { cartItem } from '../App'
+
+
+
+ 
+
+
+export let cartItem = [];
 export const ProductScreen = ({match,history}) => {
+
 
   let [qty,setQty] = useState()
 
     let [p,setP] = useState()
 
     let Id = match.params.id
+    
+    let dispatch = useDispatch()
+
+    
+  
+   
 
 
     let cartHandler = (id)=>{
-       if(qty !== null){
-         history.push(`/cart/item/${id}?qty=${qty}`)
-       }
+
+      let cart = products.find((ele)=>ele.id === id)
+      cart.qty = qty
+      let it = cartItem.find((e)=>e.title == cart.title)
+      if(it){
+           
+        return history.push('/cart/item')
+      }else{
+       
+        cartItem.push(cart)
+        localStorage.setItem("cartItems", JSON.stringify(cartItem));
+      }
+    //  console.log(cartItem)
+     
+     history.push(`/cart/item`)
+
+     
+    
+
+
+    
     }
 
     useEffect(()=>{ 
@@ -27,8 +67,7 @@ export const ProductScreen = ({match,history}) => {
             setP(item)
         }
 
-       
-    },[Id])
+    },[Id,cartItem])
     
 
 
@@ -62,7 +101,10 @@ export const ProductScreen = ({match,history}) => {
                 <h4>Category : {p && p.category}</h4>
                 <hr />
                 <h4>
-                  Stock : <span style={{color:'green'}}>{p && p.rating.count}  Items Left</span>
+                  Stock :{" "}
+                  <span style={{ color: "green" }}>
+                    {p && p.rating.count} Items Left
+                  </span>
                 </h4>
                 <hr />
                 <span id="sp">
@@ -73,13 +115,20 @@ export const ProductScreen = ({match,history}) => {
                       id="select"
                     >
                       {p &&
-                        [...Array(p.rating.count).keys()].map((e,index) => {
-                          return <option key={index} value={e + 1}>{e + 1}</option>;
+                        [...Array(p.rating.count).keys()].map((e, index) => {
+                          return (
+                            <option key={index} value={e}>
+                              {e}
+                            </option>
+                          );
                         })}
                     </select>
                   </div>
 
-                  <button id="bb" onClick={()=>cartHandler(p && p.id)} >Add To cart</button>
+                  <button id="bb" onClick={() => cartHandler(p && p.id)}>
+                    Add To cart
+                  </button>
+                 
                 </span>
               </div>
             </div>
