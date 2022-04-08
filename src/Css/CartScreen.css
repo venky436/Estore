@@ -24,3 +24,20 @@ td{
     border: 0;
     /* margin: 0 1.5rem; */
 }
+#empty{
+    display: block;
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 15rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: green;
+}
+#shop{
+    font-size: 2rem !important;
+    /* margin: 1rem 2rem 0 0; */
+    background-color: blue;
+    color: white;
+    padding: 0.5rem;
+}
