@@ -156,7 +156,7 @@ export const Body = ({history}) => {
                     <hr />
                     <div className="bb-g">
                       {" "}
-                      <a className="btn bb">cart</a>
+                      {/* <a className="btn bb">cart</a> */}
                       <a
                         className="btn bb"
                         onClick={() => viewHandler(product.id)}
