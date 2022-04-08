@@ -156,7 +156,7 @@ let signupSubmit = (e) => {
 
           <div className="right">
             <div className="right_content">
-              <Link to="/cart/item">
+              <Link to="/cart/item/view">
                 <li onMouseOver={cartHandler}>
                   <i className="fas fa-shopping-cart"></i> Cart
                 </li>
@@ -181,7 +181,7 @@ let signupSubmit = (e) => {
         }
       >
         <h1 className="d-block text-center text-white">
-          You can add your Navlinks Here
+          This is for Nav Links
         </h1>
       </div>
 

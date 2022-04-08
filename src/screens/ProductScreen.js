@@ -33,21 +33,23 @@ export const ProductScreen = ({match,history}) => {
     let cartHandler = (id)=>{
 
       let cart = products.find((ele)=>ele.id === id)
-      cart.qty = qty
-      let it = cartItem.find((e)=>e.title == cart.title)
-      if(it){
-           
-        return history.push('/cart/item')
+      if(qty > 0){
+         cart.qty = qty;
+        let it = cartItem.find((e) => e.title == cart.title);
+        if (it) {
+          return history.push("/cart/item");
+        } else {
+          cartItem.push(cart);
+          localStorage.setItem("cartItems", JSON.stringify(cartItem));
+        }
+
+        history.push(`/cart/item/view`)
       }else{
-       
-        cartItem.push(cart)
-        localStorage.setItem("cartItems", JSON.stringify(cartItem));
-      }
-    //  console.log(cartItem)
+         alert('Quntity Should be greater then 1')
      
-     history.push(`/cart/item`)
 
     }
+  }
 
     useEffect(()=>{ 
        

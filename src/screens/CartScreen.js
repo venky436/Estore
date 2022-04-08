@@ -47,9 +47,10 @@ export const CartScreen = ({match,history,location}) => {
   let placeHandler=()=>{
    
     alert('Your order successfully placed')
-    history.push('/')
+   
     localStorage.removeItem('cartItems')
     cartItem.length = 0
+     history.push("/");
   }
 
 
@@ -74,29 +75,60 @@ let price = cartItem && cartItem.reduce((acc,ele)=>acc+(ele.price*ele.qty),0)
     <div>
       {items.length > 0 ? (
         <div className="container" style={{ marginTop: "19rem" }}>
-          <div className="row">
-            <div className="col-md-8">
+          <div className="row d-flex align-items-center justify-content-center">
+            <div className="col-md-8 col-12 col-sm-12">
+              <ListGroup>
+                <ListGroup.Item>
+                  <div className="row d-flex align-items-center justify-content-center">
+                    <div className="col-md-1 col-1 col-sm-1">&nbsp;</div>
+                    <div className="col-md-3 col-3 col-sm-3 ">
+                      <h3>Name</h3>
+                    </div>
+                    <div className="col-md-1 col-1 col-sm-1">
+                      <h3>Quantity</h3>
+                    </div>
+                    <div className="col-md-1 col-1 col-sm-1">
+                      <h1>&nbsp;</h1>
+                    </div>
+
+                    <div className="col-md-2 col-2 col-sm-2">
+                      <h3>Price</h3>
+                    </div>
+                    <div className="col-md-2 col-2 col-sm-2">
+                      <h3>Total</h3>
+                    </div>
+                    <div className="col-md-2 col-2 col-sm-2">
+                      <h3>Remove</h3>
+                    </div>
+                  </div>
+                </ListGroup.Item>
+              </ListGroup>
+
               {items &&
                 items.map((e, index) => (
                   <ListGroup key={index}>
                     <ListGroup.Item>
-                      <div className="row">
-                        <div className="col-md-1">
+                      <div className="row ">
+                        <div className="col-md-1 col-1 col-sm-1 d-flex align-items-center justify-content-center">
                           <img src={e.image} className="d-block w-100" />
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-md-3 col-3 colsm-3 d-flex align-items-center justify-content-center">
                           <h3>{e.title}</h3>
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-md-1 col-1 col-sm-1 d-flex align-items-center justify-content-center">
                           <h3>{e.qty}</h3>
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-md-1 col-1 col-sm-1">
+                          <h1>*</h1>
+                        </div>
+
+                        <div className="col-md-2 col-2 col-sm-2">
                           <h3>${e.price}</h3>
                         </div>
-                        <div className="col-md-2">
-                          <h3>${e.qty * e.price}</h3>
+                        <div className="col-md-2 col-2 col-sm-2">
+                          <h3>${(e.qty * e.price).toFixed(2)}</h3>
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-md-2 col-2 col-sm-2">
                           <button id="btn" onClick={() => removeHandler(e)}>
                             <i className="fas fa-trash" title="Remove"></i>
                           </button>
@@ -106,7 +138,7 @@ let price = cartItem && cartItem.reduce((acc,ele)=>acc+(ele.price*ele.qty),0)
                   </ListGroup>
                 ))}
             </div>
-            <div className="col-3 col-md-3 col-lg-3 py-3">
+            <div className="col-12 col-md-3 col-sm-12 py-3">
               <div className="card">
                 <div className="card-body">
                   <h3 className="card-title">
@@ -139,7 +171,7 @@ let price = cartItem && cartItem.reduce((acc,ele)=>acc+(ele.price*ele.qty),0)
         <h1 id="empty">
           Your cart Is Empty{" "}
           <Link to="/">
-            <span id='shop'>Shop Now</span>
+            <span id="shop">Shop Now</span>
           </Link>
         </h1>
       )}

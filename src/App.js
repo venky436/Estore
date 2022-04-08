@@ -34,7 +34,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Body} />
             <Route  path="/view/:id" component={ProductScreen} />
-            <Route exact path="/cart/item" component={CartScreen} />
+            <Route exact path="/cart/item/view" component={CartScreen} />
             <Route path="/count" component={Counter} />
           </Switch>
         </BrowserRouter>
